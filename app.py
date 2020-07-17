@@ -11,9 +11,9 @@ while True:
 		update = sheet_obj.cell(row = i,column = 3)
 		if update.value == 1:
 			if temp.value == 'F':
-				unit == "imperial"
+				unit = "imperial"
 			else:
-				unit == "metric"
+				unit = "metric"
 			web_url = requests.get("http://api.openweathermap.org/data/2.5/weather?appid=b13cff6465438dd33fd22463de9fbf34&mode=json&units={}&q={}".format(unit,cell_obj.value))
             sheet_obj.cell(column =4 , row = i,value = web_url.json()["main"]["temp"])
             sheet_obj.cell(column = 5,row = i,value = web_url.json()["main"]["humidity"])
@@ -24,3 +24,4 @@ while True:
     wb.save("test1.xlsx")
     print("Information updated ")
     time.sleep(3)#sheet updated every 3 seconds
+
